@@ -160,9 +160,12 @@
 	--ease-smooth: var(--ease-smooth);
 	--ease-out-quad: var(--ease-out-quad);
 	--ease-navbar: var(--ease-navbar);
-	--animate-marquee: marquee 60s infinite linear;
-	--animate-marquee-vertical: marquee-vertical 60s infinite linear;
 	--animate-shiny-text: shiny-text 8s infinite;
+}
+
+@theme inline {
+   	--animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) infinite linear;
 }
 
 /* rehype-pretty-code theme switching */
@@ -179,7 +182,7 @@ html.dark code[data-theme*="github-dark"] span[data-line] span {
 		transform: translateX(0);
 	}
 	to {
-		transform: translateX(calc(-100% - 1rem));
+	    transform: translateX(calc(-100% - var(--gap)));
 	}
 }
 @keyframes marquee-vertical {
@@ -187,9 +190,10 @@ html.dark code[data-theme*="github-dark"] span[data-line] span {
 		transform: translateY(0);
 	}
 	to {
-		transform: translateY(calc(-50% - 1rem / 2));
+	    transform: translateY(calc(-100% - var(--gap)));
 	}
 }
+
 @keyframes shiny-text {
 	0%,
 	90%,
