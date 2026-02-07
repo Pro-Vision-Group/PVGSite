@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
-import { useEffect, useId, useRef, useState } from "react";
-import { LogoIcon } from "@/components/icons/logo-icon";
+import { Link, useMatchRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import {
@@ -14,14 +14,22 @@ import { cn } from "@/lib/utils";
 
 registerGsapPlugins();
 
-const NAV_LINKS = [
+type NavLink = { label: string; target: string };
+
+const HOME_NAV_LINKS: NavLink[] = [
 	{ label: "Services", target: "#services" },
-	{ label: "Works", target: "#works" },
-	{ label: "Showcase", target: "#showcase" },
+	{ label: "Companies", target: "#works" },
 	{ label: "Testimonials", target: "#testimonials" },
+	{ label: "Blog", target: "/blog" },
+];
+
+const SOLUTIONS_NAV_LINKS: NavLink[] = [
+	{ label: "Services", target: "#services" },
+	{ label: "About", target: "#about" },
+	{ label: "Approach", target: "#approach" },
+	{ label: "Blog", target: "/blog" },
 	{ label: "FAQ", target: "#faq" },
-	{ label: "Blog", target: "#blog" },
-] as const;
+];
 
 const colorWithOpacity = (token: string, opacity: number) => {
 	const clamped = Math.min(Math.max(opacity, 0), 1);
@@ -30,6 +38,14 @@ const colorWithOpacity = (token: string, opacity: number) => {
 };
 
 export function Navbar() {
+	const matchRoute = useMatchRoute();
+	const isSolutionsPage = !!matchRoute({ to: "/solutions" });
+	const navLinks = useMemo(
+		() => (isSolutionsPage ? SOLUTIONS_NAV_LINKS : HOME_NAV_LINKS),
+		[isSolutionsPage],
+	);
+	const brandName = isSolutionsPage ? "Pro Vision Solutions" : "Pro Vision Group";
+	const [activeSection, setActiveSection] = useState<string>("");
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [isMobile, setIsMobile] = useState(
 		typeof window !== "undefined" ? window.innerWidth < 1024 : false,
@@ -44,6 +60,7 @@ export function Navbar() {
 	const lineThreeRef = useRef<HTMLSpanElement>(null);
 	const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
 	const { scrollTo } = useLenis();
+	const navigate = useNavigate();
 	const mobileMenuId = useId();
 
 	const toggleTl = useRef<gsap.core.Timeline | null>(null);
@@ -195,7 +212,7 @@ export function Navbar() {
 				backgroundColor: colorWithOpacity("--color-card", 0),
 				borderColor: colorWithOpacity("--color-border", 0),
 				backdropFilter: "blur(0px)",
-				maxWidth: "66rem",
+				maxWidth: "90rem",
 				transform: "translateY(0px)",
 				"--highlight-opacity": 0,
 			});
@@ -212,7 +229,7 @@ export function Navbar() {
 				backgroundColor: colorWithOpacity("--color-card", 0.75),
 				borderColor: colorWithOpacity("--color-border", 1),
 				backdropFilter: "blur(16px)",
-				maxWidth: "64rem",
+				maxWidth: "88rem",
 				transform: "translateY(6px)",
 				"--highlight-opacity": 1,
 			});
@@ -248,9 +265,37 @@ export function Navbar() {
 		};
 	}, []);
 
+	useEffect(() => {
+		const triggers: ScrollTrigger[] = [];
+
+		for (const link of navLinks) {
+			const id = link.target.replace("#", "");
+			const el = document.getElementById(id);
+			if (!el) continue;
+
+			triggers.push(
+				ScrollTrigger.create({
+					trigger: el,
+					start: "top center",
+					end: "bottom center",
+					onEnter: () => setActiveSection(link.target),
+					onEnterBack: () => setActiveSection(link.target),
+				}),
+			);
+		}
+
+		return () => {
+			for (const t of triggers) t.kill();
+		};
+	}, [navLinks]);
+
 	const handleScroll = (target: string) => {
 		setMobileMenuOpen(false);
-		scrollTo(target);
+		if (target.startsWith("#")) {
+			scrollTo(target);
+		} else {
+			void navigate({ to: target });
+		}
 	};
 
 	return (
@@ -261,36 +306,66 @@ export function Navbar() {
 			<div
 				ref={navbarRef}
 				className={cn(
-					"relative flex w-264 items-center justify-between rounded-lg py-1.5 px-4",
+					"relative flex w-full max-w-[1440px] items-center justify-between rounded-lg py-1.5 px-4",
 					"bg-card/75 lg:bg-card/0 border border-border lg:border-border/0 dark:card-highlight",
 					"[--highlight-opacity:1] lg:[--highlight-opacity:0] text-foreground transition-shadow duration-350 ease-navbar",
 					isNavbarElevated && "shadow-lg",
 				)}
 			>
-				<Button
-					variant="ghost"
-					size="sm"
-					className="p-0 text-sm font-medium text-foreground hover:bg-transparent"
-					onClick={() => handleScroll("#hero")}
-					role="menuitem"
-				>
+				{isSolutionsPage ? (
 					<div className="flex items-center gap-2">
-						<LogoIcon className="size-4" />
-						<span>Your Name</span>
+						<Button
+							variant="ghost"
+							size="sm"
+							className="p-0 text-xs text-foreground/40 hover:text-foreground hover:bg-transparent"
+							asChild
+							role="menuitem"
+						>
+							<Link to="/">
+								Pro Vision Group
+							</Link>
+						</Button>
+						<span className="text-foreground/20">/</span>
+						<Button
+							variant="ghost"
+							size="sm"
+							className="p-0 text-sm font-medium text-foreground hover:bg-transparent"
+							onClick={() => scrollTo(0)}
+							role="menuitem"
+						>
+							{brandName}
+						</Button>
 					</div>
-				</Button>
+				) : (
+					<Button
+						variant="ghost"
+						size="sm"
+						className="p-0 text-sm font-medium text-foreground hover:bg-transparent"
+						onClick={() => handleScroll("#hero")}
+						role="menuitem"
+					>
+						<div className="flex items-center gap-2">
+							<span>{brandName}</span>
+						</div>
+					</Button>
+				)}
 
 				<div
 				className="hidden absolute left-1/2 -translate-x-1/2 md:flex items-center gap-2"
 					role="menubar"
 					aria-label="Desktop navigation"
 				>
-					{NAV_LINKS.map((link) => (
+					{navLinks.map((link) => (
 						<Button
 							key={link.target}
 							variant="ghost"
 							size="sm"
-							className="text-xs text-foreground/70 hover:text-foreground hover:bg-transparent"
+							className={cn(
+								"text-xs hover:text-foreground hover:bg-transparent transition-colors duration-200",
+								activeSection === link.target
+									? "text-foreground"
+									: "text-foreground/40",
+							)}
 							onClick={() => handleScroll(link.target)}
 							role="menuitem"
 						>
@@ -302,15 +377,29 @@ export function Navbar() {
 				<div className="hidden md:flex items-center gap-2">
 					<ThemeToggle />
 
-					<Button
-						variant="default"
-						size="sm"
-						className="text-xs"
-						onClick={() => handleScroll("#contact")}
-						role="menuitem"
-					>
-						Contact
-					</Button>
+					{isSolutionsPage ? (
+						<Button
+							variant="default"
+							size="sm"
+							className="text-xs"
+							asChild
+							role="menuitem"
+						>
+							<Link to="/" hash="contact">
+								Contact
+							</Link>
+						</Button>
+					) : (
+						<Button
+							variant="default"
+							size="sm"
+							className="text-xs"
+							onClick={() => handleScroll("#contact")}
+							role="menuitem"
+						>
+							Contact
+						</Button>
+					)}
 				</div>
 
 				<div className="flex md:hidden items-center gap-2">
@@ -361,27 +450,46 @@ export function Navbar() {
 					className="rounded-lg border bg-card/75 p-4 shadow-lg flex flex-col gap-2 overflow-hidden"
 					style={{ visibility: "hidden" }}
 				>
-					{NAV_LINKS.map((link) => (
+					{navLinks.map((link) => (
 						<Button
 							key={link.target}
 							variant="ghost"
 							size="sm"
-							className="justify-start px-0 text-foreground/70 hover:text-foreground"
+							className={cn(
+								"justify-start px-0 hover:text-foreground transition-colors duration-200",
+								activeSection === link.target
+									? "text-foreground"
+									: "text-foreground/40",
+							)}
 							onClick={() => handleScroll(link.target)}
 							role="menuitem"
 						>
 							{link.label}
 						</Button>
 					))}
-					<Button
-						variant="default"
-						size="sm"
-						className="mt-2 text-sm"
-						onClick={() => handleScroll("#contact")}
-						role="menuitem"
-					>
-						Contact
-					</Button>
+					{isSolutionsPage ? (
+						<Button
+							variant="default"
+							size="sm"
+							className="mt-2 text-sm"
+							asChild
+							role="menuitem"
+						>
+							<Link to="/" hash="contact">
+								Contact
+							</Link>
+						</Button>
+					) : (
+						<Button
+							variant="default"
+							size="sm"
+							className="mt-2 text-sm"
+							onClick={() => handleScroll("#contact")}
+							role="menuitem"
+						>
+							Contact
+						</Button>
+					)}
 				</div>
 			</div>
 		</nav>

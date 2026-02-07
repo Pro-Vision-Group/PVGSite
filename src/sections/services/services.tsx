@@ -1,28 +1,47 @@
 import { StarIcon } from "@radix-ui/react-icons";
 import Section from "@/components/layout/section";
-import { serviceFeatures } from "@/sections/services/_constants/services";
-
-import { ServiceCard as Card } from "./_components/service-card";
+import { ServiceCard } from "@/sections/services/_components/service-card";
+import { CleanCodeCardContent } from "@/sections/services/_components/clean-code-card-content";
+import { bestPractices } from "@/sections/services/_constants/services";
 
 export default function Services() {
 	return (
 		<Section
 			id="services"
-			title="Showcase the services you offer"
-			description="Summarize the type of projects you take on, the tools you use, or the problems you help teams solve."
-			className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-			badgeText="What you do"
+			title="Comprehensive solutions across industries"
+			description="Our integrated approach means you get access to a full spectrum of professional services, backed by the reputation and resources of Pro Vision Group."
+			badgeText="Who We Are"
 			badgeIcon={<StarIcon aria-hidden="true" />}
 		>
-			{serviceFeatures.map((feature) => {
-				const featureId = `service-title-${feature.name
-					.toLowerCase()
-					.replace(/\s+/g, "-")}`;
-
-				return (
-					<Card key={feature.name} {...feature} aria-labelledby={featureId} />
-				);
-			})}
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+				<div className="flex flex-col gap-2 rounded-lg border border-border bg-card p-6 md:col-span-2">
+					<h3 className="text-base font-medium text-foreground">
+						Our Story
+					</h3>
+					<p className="text-sm text-foreground/60 leading-relaxed">
+						Pro Vision Group is a UAE-based company with over
+						5 years of experience delivering excellence across
+						technology, consulting, construction, and strategic
+						investments. Headquartered in Dubai, we offer
+						integrated, end-to-end solutions for businesses across
+						the region and beyond.
+					</p>
+				</div>
+				<div className="flex flex-col items-center justify-center gap-1 rounded-lg border border-border bg-card p-6 text-center">
+					<span className="text-2xl md:text-3xl font-semibold text-foreground">
+						5+
+					</span>
+					<span className="text-sm text-foreground/50">
+						Years of Experience
+					</span>
+				</div>
+				<ServiceCard
+					name="Our Principles"
+					description="Integrity, innovation, and excellence guide every engagement — the values that have built our reputation across industries."
+					className="md:col-span-3"
+					background={<CleanCodeCardContent items={bestPractices} />}
+				/>
+			</div>
 		</Section>
 	);
 }

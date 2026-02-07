@@ -10,10 +10,10 @@ export const contactSchema = z.object({
 		.min(2, "Add at least two characters for your last name.")
 		.max(60, "That's a bit too long—shorten your last name."),
 	email: z.email("Use a valid email so someone can reply."),
-	subject: z
+	company: z
 		.string()
-		.min(2, "Add a short hint about the project.")
-		.max(120, "Keep the subject brief."),
+		.min(2, "Add your company name.")
+		.max(120, "Keep the company name brief."),
 	message: z
 		.string()
 		.min(10, "Share a bit more about the challenge.")

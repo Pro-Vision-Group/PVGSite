@@ -58,118 +58,118 @@ const convertingCardIcons: ConvertingCardIconSet = {
 
 export const serviceItems: ServiceItem[] = [
 	{
-		name: "Service Package 01",
+		name: "Digital Transformation",
 		description:
-			"Swap in the flagship engagement you offer most often — outline the scope, duration, and business outcome.",
+			"End-to-end digital strategy and implementation, helping businesses modernize operations and unlock new growth through technology.",
 	},
 	{
-		name: "Service Package 02",
+		name: "Project Management",
 		description:
-			"Use this slot for a second offer or retainer tier to highlight how you support different client needs.",
+			"Expert oversight of complex, multi-stakeholder projects — from planning through delivery — ensuring on-time, on-budget results.",
 	},
 	{
-		name: "Dedicated Sprint",
+		name: "Strategic Advisory",
 		description:
-			"Describe a focused two-to-four week collaboration you run to tackle a single feature, redesign, or prototype.",
+			"High-level consulting for market entry, expansion planning, and operational optimization across diverse industry verticals.",
 	},
 	{
-		name: "Advisory Session",
+		name: "Investment & Partnerships",
 		description:
-			"Note how teams can book strategy calls, technical audits, or office hours when they need a quick unblock.",
+			"Identifying and structuring strategic investments, joint ventures, and partnerships that create long-term value.",
 	},
 	{
-		name: "Launch Support",
+		name: "Design & Construction",
 		description:
-			"Explain the handoff, QA, and deployment support you bring during product launches or campaign pushes.",
+			"Full-cycle contracting services from architectural design to project completion, delivering quality-built commercial and residential spaces.",
 	},
 	{
-		name: "Optimization Pass",
+		name: "Media & Creative",
 		description:
-			"Reserve this line for performance, accessibility, or UX audits that keep shipped work feeling polished.",
+			"Brand strategy, content production, and digital marketing solutions that elevate visibility and drive meaningful engagement.",
 	},
 	{
-		name: "Systems Audit",
+		name: "IT Infrastructure",
 		description:
-			"Call out any platform review, stack migration, or modernization work that keeps teams prepared for scale.",
+			"Enterprise-grade technology solutions including cloud architecture, cybersecurity, and managed IT services for scalable growth.",
 	},
 ];
 
 export const bestPractices: ServiceItem[] = [
 	{
-		name: "Principle 01 — Lead With Outcomes",
+		name: "Integrity First",
 		description:
-			"A quick reminder to mention the measurable change you bring, not just the toolset you use to get there.",
+			"We conduct every engagement with transparency, honesty, and a commitment to ethical business practices that build lasting trust.",
 	},
 	{
-		name: "Principle 02 — Keep Teams In The Loop",
+		name: "Innovation-Driven",
 		description:
-			"Suggest how you handle weekly updates, async notes, or Loom recaps so clients know exactly what's moving.",
+			"We continuously seek new methods, technologies, and ideas to deliver smarter solutions and stay ahead of market demands.",
 	},
 	{
-		name: "Principle 03 — Design For Handoff",
+		name: "Client-Centric Approach",
 		description:
-			"Explain how you package deliverables, documentation, or recordings so work is easy to extend later on.",
+			"Every decision is guided by the needs and goals of our clients, ensuring tailored solutions that drive measurable outcomes.",
 	},
 	{
-		name: "Principle 04 — Prototype Early",
+		name: "Excellence in Execution",
 		description:
-			"Encourage readers to reference the prototypes, sandboxes, or experiments you typically run up front.",
+			"We hold ourselves to the highest standards of quality, ensuring every project is delivered with precision and professionalism.",
 	},
 	{
-		name: "Principle 05 — Sweat The Details",
+		name: "Collaborative Partnerships",
 		description:
-			"Use this space to note your obsession with accessibility, polish, or animation that sets you apart.",
+			"We believe in the power of collaboration — working closely with clients, partners, and communities to create shared value.",
 	},
 	{
-		name: "Principle 06 — Build For Change",
+		name: "Sustainable Growth",
 		description:
-			"Remind teams that you keep architecture flexible, future-friendly, and ready for whatever V2 demands.",
+			"Our strategies prioritize long-term sustainability, balancing profitability with responsible environmental and social practices.",
 	},
 	{
-		name: "Principle 07 — Document The Journey",
+		name: "Agile & Adaptive",
 		description:
-			"Point to how you capture learnings, write internal notes, or ship looms that demystify key decisions.",
+			"We respond swiftly to changing market conditions and client needs, maintaining flexibility without compromising on quality.",
 	},
 	{
-		name: "Principle 08 — Test Relentlessly",
+		name: "Knowledge Sharing",
 		description:
-			"Reserve this bullet for your preferred QA cadence, tooling, or review rituals before anything ships.",
+			"We invest in our teams and partners through continuous learning, mentorship, and the open exchange of industry insights.",
 	},
 	{
-		name: "Principle 09 — Collaborate Openly",
+		name: "Regional Expertise",
 		description:
-			"Call out the cadence of workshops, office hours, or async standups you host with product partners.",
+			"Deep understanding of the UAE and Middle East markets allows us to navigate local dynamics with confidence and cultural sensitivity.",
 	},
 	{
-		name: "Principle 10 — Iterate After Launch",
+		name: "Measurable Impact",
 		description:
-			"Highlight how you stay close to analytics, user feedback, or retention data to plan the next release.",
+			"We track performance, report transparently, and iterate relentlessly to ensure every initiative delivers tangible results.",
 	},
 ];
 
 export const serviceFeatures: ServiceFeature[] = [
 	{
-		name: "Service Overview",
+		name: "Our Service Portfolio",
 		description:
-			"Swap in a short blurb that explains what types of projects you take on and how clients can engage.",
+			"From technology and consulting to construction and media, we offer an integrated suite of professional services under one roof.",
 		href: "#",
 		className: "col-span-1",
 		background: <ServicesCardContent items={serviceItems} />,
 	},
 
 	{
-		name: "From Design To Build",
+		name: "Strategy to Execution",
 		description:
-			"Use this tile to describe how you translate Figma boards, decks, or briefs into production-ready work.",
+			"We translate strategic vision into operational reality — bridging the gap between planning and measurable business outcomes.",
 		href: "#",
 		className: "col-span-1",
 		background: <ConvertingCardContent icons={convertingCardIcons} />,
 	},
 
 	{
-		name: "Code Standards",
+		name: "Our Principles",
 		description:
-			"Outline the engineering values, review rituals, or guardrails that keep your work maintainable.",
+			"Integrity, innovation, and excellence guide every engagement — the values that have built our reputation across industries.",
 		href: "#",
 		className: "col-span-1",
 		background: <CleanCodeCardContent items={bestPractices} />,

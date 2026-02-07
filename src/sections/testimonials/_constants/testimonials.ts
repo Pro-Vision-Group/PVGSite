@@ -8,37 +8,37 @@ export interface TestimonialType {
 export const testimonials: TestimonialType[] = [
 	{
 		content:
-			"Working with this developer has significantly improved my digital presence. His attention to detail and creative approach exceeded my expectations.",
-		author: "Bill Gates",
-		position: "Tech Entrepreneur",
-		imageSrc: "/placeholder-2.jpg",
+			"Pro Vision Group transformed our digital infrastructure completely. Their team's expertise and dedication to delivering results on time made them an invaluable partner for our expansion.",
+		author: "Verified Client",
+		position: "",
+		imageSrc: "/provision-avatar.png",
 	},
 	{
 		content:
-			"His technical expertise and creativity are exceptional. He didn't just meet our goals – he helped us see the project from a new perspective.",
-		author: "Elon Musk",
-		position: "CEO, SpaceY",
-		imageSrc: "/placeholder-2.jpg",
+			"The strategic advisory team at Pro Vision helped us identify growth opportunities we hadn't considered. Their insight into regional markets is truly unmatched.",
+		author: "Verified Client",
+		position: "",
+		imageSrc: "/provision-avatar.png",
 	},
 	{
 		content:
-			"His innovative approach to problem-solving and commitment to the project made a strong impression. The results speak for themselves.",
-		author: "Marie Curie",
-		position: "Scientist",
-		imageSrc: "/placeholder-2.jpg",
+			"Pro Vision Solutions delivered a world-class platform for our operations. Their agile approach and transparent communication set a new standard for how we work with technology partners.",
+		author: "Verified Client",
+		position: "",
+		imageSrc: "/provision-avatar.png",
 	},
 	{
 		content:
-			"Working with Marek has been seamless and professional. His responsiveness and ability to deliver beyond expectations set him apart.",
-		author: "Ada Lovelace",
-		position: "Computing Pioneer",
-		imageSrc: "/placeholder-2.jpg",
+			"Their software development team built exactly what we needed — on time, on budget, and with quality that exceeded our expectations. Pro Vision Solutions is our go-to technology partner.",
+		author: "Verified Client",
+		position: "",
+		imageSrc: "/provision-avatar.png",
 	},
 	{
 		content:
-			"Great collaboration and clear communication throughout. His input on design was invaluable, and the results exceeded expectations.",
-		author: "Steve Jobs",
-		position: "Co-Founder, Pear Inc.",
-		imageSrc: "/placeholder-2.jpg",
+			"Pro Vision Group's integrated approach means we get consulting, technology, and execution all under one roof. It's rare to find that level of capability in a single partner.",
+		author: "Verified Client",
+		position: "",
+		imageSrc: "/provision-avatar.png",
 	},
 ];

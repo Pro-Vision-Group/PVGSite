@@ -26,7 +26,7 @@ export default function Section({
 	return (
 		<section
 			id={id}
-			className={`w-full md:max-w-5xl md:border-x border-border/80 border-dashed divide-y divide-border/80 divide-dashed flex flex-col items-start justify-start ${wrapperClassName ?? ""}`}
+			className={`w-full flex flex-col items-start justify-start ${wrapperClassName ?? ""}`}
 		>
 			<div className="w-full flex flex-col gap-2 px-4 py-8 md:p-8">
 				{badgeText ? (

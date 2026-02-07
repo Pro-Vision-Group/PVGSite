@@ -16,6 +16,7 @@ registerGsapPlugins();
 
 export default function Hero() {
 	const heroRef = useRef<HTMLDivElement>(null);
+	const logoRef = useRef<HTMLDivElement>(null);
 	const badgeRef = useRef<HTMLDivElement>(null);
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const descriptionRef = useRef<HTMLParagraphElement>(null);
@@ -65,7 +66,7 @@ export default function Hero() {
 			if (!hero) return;
 
 			gsap.set(
-      [badgeRef.current, titleRef.current, descriptionRef.current, actionsRef.current],
+      [logoRef.current, badgeRef.current, titleRef.current, descriptionRef.current, actionsRef.current],
       { autoAlpha: 1 }
       );
 
@@ -102,6 +103,16 @@ export default function Hero() {
 				},
 			});
 
+			if (logoRef.current) {
+				timeline.from(logoRef.current, {
+					yPercent: 30,
+					autoAlpha: 0,
+					filter: "blur(16px)",
+					duration: 0.9,
+					ease: premiumEase,
+				});
+			}
+
 			if (badgeRef.current) {
 				timeline.from(badgeRef.current, {
 					yPercent: 30,
@@ -109,7 +120,7 @@ export default function Hero() {
 					filter: "blur(16px)",
 					duration: 0.9,
 					ease: premiumEase,
-				});
+				}, "-=0.6");
 			}
 
 			if (titleSplit) {
@@ -177,13 +188,30 @@ export default function Hero() {
 		<section
 			id="hero"
 			ref={heroRef}
-			className="relative flex h-[55vh] md:h-[50vh] w-full px-4 md:px-16 flex-col items-center justify-center gap-4"
+			className="relative flex h-svh w-full px-4 md:px-16 flex-col items-center justify-center gap-4"
 		>
 			<div className="relative z-10 flex flex-col items-center gap-2">
+				<div ref={logoRef} style={{visibility: "hidden"}} className="relative h-10 md:h-14 mb-8 flex items-center justify-center">
+					<img src="/logo.png" alt="Pro Vision Group" className="h-full mx-auto object-contain" />
+					<div
+						className="pointer-events-none absolute inset-0 animate-shiny-text bg-linear-to-r from-transparent via-white/60 to-transparent bg-no-repeat bg-position-[0_0] bg-size-[200px_100%]"
+						style={{
+							"--shiny-width": "200px",
+							WebkitMaskImage: "url(/logo.png)",
+							WebkitMaskSize: "contain",
+							WebkitMaskRepeat: "no-repeat",
+							WebkitMaskPosition: "center",
+							maskImage: "url(/logo.png)",
+							maskSize: "contain",
+							maskRepeat: "no-repeat",
+							maskPosition: "center",
+						} as React.CSSProperties}
+					/>
+				</div>
 				<div style={{visibility: "hidden"}} ref={badgeRef} className="w-fit">
 					<ShinyBadge>
 						<FrameIcon aria-hidden="true" className="size-3.5" />
-						Your Role Here
+						Established Group of Companies
 					</ShinyBadge>
 				</div>
 				<h1
@@ -191,15 +219,14 @@ export default function Hero() {
 					ref={titleRef}
 					className="text-3xl text-center text-foreground font-medium text-balance max-w-3xl"
 				>
-					Add a headline that tells people what you design, build, or launch.
+					Visionary Solutions, Exceptional Results
 				</h1>
 				<p
 		      style={{visibility: "hidden"}}
 					ref={descriptionRef}
 					className="text-base md:text-lg text-center text-foreground/70 font-medium text-balance leading-relaxed max-w-xl"
 				>
-					Use this paragraph to summarize your craft, industries served, or the
-					results clients can expect when working with you.
+					A premier consortium of companies delivering excellence across technology, consulting, construction, and strategic investments.
 				</p>
 			</div>
 			<div ref={actionsRef} className="relative z-10  flex items-center gap-2">
@@ -207,17 +234,17 @@ export default function Hero() {
 			    style={{visibility: "hidden"}}
 					variant="default"
 					size="md"
-					onClick={() => scrollTo("#contact")}
+					onClick={() => scrollTo("#works")}
 				>
-					Start a project
+					Explore Our Companies
 				</Button>
 				<Button
 		      style={{visibility: "hidden"}}
 					variant="secondary"
 					size="md"
-					onClick={() => scrollTo("#works")}
+					onClick={() => scrollTo("#contact")}
 				>
-					View portfolio
+					Get in Touch
 				</Button>
 			</div>
 

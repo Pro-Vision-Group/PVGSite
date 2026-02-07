@@ -1,5 +1,6 @@
 export interface WorksItem {
 	image: string;
+	logo?: string;
 	title: string;
 	description: string;
 	link: string;
@@ -8,14 +9,9 @@ export interface WorksItem {
 export const works: WorksItem[] = [
 	{
 		image: "/placeholder-1.jpg",
-		title: "Project 1",
-		description: "Project Description.",
-		link: "https://example.com/project-1",
-	},
-	{
-		image: "/placeholder-1.jpg",
-		title: "Project 2",
-		description: "Project Description.",
-		link: "https://example.com/project-2",
+		logo: "/provision-solutions-logo.png",
+		title: "Pro Vision Solutions",
+		description: "Delivering cutting-edge software development, cloud infrastructure, and digital transformation solutions for enterprises across the region.",
+		link: "/solutions",
 	},
 ];

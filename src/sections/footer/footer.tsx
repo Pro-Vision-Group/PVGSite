@@ -1,5 +1,5 @@
 import type { MouseEvent } from "react";
-import { LogoIcon } from "@/components/icons/logo-icon";
+import { Link } from "@tanstack/react-router";
 import { useLenis } from "@/lib/lenis-context";
 import {
 	footerLinks,
@@ -10,7 +10,7 @@ export default function Footer() {
 	const currentYear = new Date().getFullYear();
 	const { scrollTo } = useLenis();
 
-	const handleNavigationClick = (
+	const handleScrollClick = (
 		event: MouseEvent<HTMLAnchorElement>,
 		target: string,
 	) => {
@@ -20,16 +20,16 @@ export default function Footer() {
 
 	return (
 		<footer className="w-full">
-			<div className="w-full md:max-w-5xl mx-auto grid gap-8 px-4 py-8 md:p-8 md:grid-cols-[minmax(0,1fr)_120px] border-border/80 border-x border-dashed">
+			<div className="w-full md:max-w-full mx-auto grid gap-8 px-4 py-8 md:p-8 md:grid-cols-[minmax(0,1fr)_120px] ">
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col gap-3">
 						<div className="flex gap-2 items-center text-foreground">
-							<LogoIcon className="size-4" />
-							<p className="text-sm font-medium">Your Name</p>
+							<img src="/logo.png" alt="Pro Vision Group" className="h-8" />
 						</div>
 						<p className="text-xs text-foreground/70 leading-relaxed max-w-xs">
-							Use this placeholder copy to describe your focus, niche, or the
-							type of projects you love working on.
+							A premier consortium of companies delivering excellence across
+							technology, consulting, construction, and strategic investments in
+							the UAE and beyond.
 						</p>
 					</div>
 
@@ -54,13 +54,22 @@ export default function Footer() {
 					<ul className="space-y-2 text-xs text-foreground/70">
 						{footerLinks.map((link) => (
 							<li key={link.label}>
-								<a
-									href={link.href}
-									onClick={(event) => handleNavigationClick(event, link.href)}
-									className="hover:text-foreground rounded transition-[color,shadow] duration-100 ease-out-quad focus-visible:ring-1 focus-visible:ring-ring/50 focus-visible:ring-offset-1 focus-visible:ring-offset-ring-offset/50 focus-visible:outline-none"
-								>
-									{link.label}
-								</a>
+								{link.href.startsWith("#") ? (
+									<a
+										href={link.href}
+										onClick={(event) => handleScrollClick(event, link.href)}
+										className="hover:text-foreground rounded transition-[color,shadow] duration-100 ease-out-quad focus-visible:ring-1 focus-visible:ring-ring/50 focus-visible:ring-offset-1 focus-visible:ring-offset-ring-offset/50 focus-visible:outline-none"
+									>
+										{link.label}
+									</a>
+								) : (
+									<Link
+										to={link.href}
+										className="hover:text-foreground rounded transition-[color,shadow] duration-100 ease-out-quad focus-visible:ring-1 focus-visible:ring-ring/50 focus-visible:ring-offset-1 focus-visible:ring-offset-ring-offset/50 focus-visible:outline-none"
+									>
+										{link.label}
+									</Link>
+								)}
 							</li>
 						))}
 					</ul>
@@ -68,14 +77,12 @@ export default function Footer() {
 			</div>
 
 			<div className="text-xs text-foreground/70 border-t border-border/80">
-				<div className="w-full md:max-w-5xl mx-auto flex flex-col md:flex-row gap-1 px-4 py-4 md:px-2 items-center justify-between">
+				<div className="w-full md:max-w-full mx-auto flex flex-col md:flex-row gap-1 px-4 py-4 md:px-2 items-center justify-between">
 					<p>
-						© {currentYear} Your Name. Update this footer text to match your
-						brand.
+						&copy; {currentYear} Pro Vision Group. All rights reserved.
 					</p>
 					<p>
-						Let visitors know where you work from or the type of collaborations
-						you take on.
+						Headquartered in Dubai, UAE. Delivering excellence worldwide.
 					</p>
 				</div>
 			</div>

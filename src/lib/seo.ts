@@ -37,24 +37,27 @@ export type BlogSeoPayload = {
 	date?: string;
 };
 
-const SITE_URL = "https://your-domain.com";
-const SITE_NAME = "Your Name";
-const DEFAULT_TITLE = "Your Name — Your Role";
+const SITE_URL = "https://provisiongroup.ae";
+const SITE_NAME = "Pro Vision Group";
+const DEFAULT_TITLE = "Pro Vision Group — Visionary Solutions, Exceptional Results";
 const DEFAULT_DESCRIPTION =
-	"Use this space to describe the kind of work you do, the industries you serve, and what makes your approach unique.";
+	"Pro Vision Group is a premier consortium of companies delivering excellence across technology, consulting, construction, real estate, investments, and media in the UAE and beyond.";
 const DEFAULT_KEYWORDS = [
-	"portfolio",
-	"freelance",
-	"independent",
-	"developer",
-	"designer",
+	"Pro Vision Group",
+	"UAE business group",
+	"technology solutions",
+	"construction contracting",
+	"management consulting",
+	"real estate development",
+	"strategic investments",
+	"media production",
+	"Dubai",
+	"holding company",
 ];
-const AUTHOR = "your-handle";
-const CONTACT_EMAIL = "hello@your-domain.com";
+const AUTHOR = "Pro Vision Group";
+const CONTACT_EMAIL = "info@provisiongroup.co";
 const SOCIAL_PROFILES = [
-	"https://github.com/your-handle",
-	"https://www.linkedin.com/in/your-profile",
-	"https://www.instagram.com/your-handle",
+	"https://www.linkedin.com/company/pro-vision-group-llc",
 ];
 
 export const absoluteUrl = (path = "/") => {
@@ -89,21 +92,24 @@ const defaultJsonLd = {
 	description: DEFAULT_DESCRIPTION,
 	address: {
 		"@type": "PostalAddress",
-		addressCountry: "Worldwide",
+		addressCountry: "AE",
 	},
 	email: CONTACT_EMAIL,
 	sameAs: SOCIAL_PROFILES,
 	offers: {
 		"@type": "Offer",
-		name: "Your Service Offering",
+		name: "Professional Services",
 		description:
-			"Describe the services you provide, the tools you work with, or the kinds of problems you solve.",
+			"Comprehensive solutions across technology, consulting, construction, real estate, investments, and media.",
 	},
 	knowsAbout: [
-		"Design systems",
-		"Interface design",
-		"Web development",
-		"Creative coding",
+		"Digital Transformation",
+		"Project Management",
+		"Strategic Advisory",
+		"Construction & Contracting",
+		"Real Estate Development",
+		"Investment Management",
+		"Media Production",
 	],
 };
 
@@ -171,7 +177,7 @@ export function getBlogPostSeo(post: BlogSeoPayload): HeadTags {
 	const isoDate = getIsoDate(post.date);
 
 	const meta: MetaTag[] = [
-		{ title: `${post.title} | Portfolio Blog` },
+		{ title: `${post.title} | Pro Vision Group Blog` },
 		{ name: "description", content: description },
 		{ name: "author", content: AUTHOR },
 		{ name: "keywords", content: keywords },
@@ -220,7 +226,7 @@ export function getBlogPostSeo(post: BlogSeoPayload): HeadTags {
 		datePublished: isoDate,
 		dateModified: isoDate,
 		author: {
-			"@type": "Person",
+			"@type": "Organization",
 			name: AUTHOR,
 		},
 		publisher: {

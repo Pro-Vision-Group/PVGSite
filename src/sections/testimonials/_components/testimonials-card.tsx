@@ -22,7 +22,7 @@ export default function TestimonialCard({
 						<span className="text-sm font-medium text-foreground">
 							{author}
 						</span>
-						<span className="text-xs text-foreground/70">{position}</span>
+						{position ? <span className="text-xs text-foreground/70">{position}</span> : null}
 					</div>
 				</div>
 			</CardContent>

@@ -100,14 +100,20 @@ export const LenisProvider: React.FC<{ children: ReactNode }> = ({
 		const isSectionTarget =
 			typeof resolvedTarget === "string" && resolvedTarget.startsWith("#");
 
-		if (isSectionTarget && pathname !== "/") {
-			pendingScrollRef.current = { target: resolvedTarget, options };
+		if (isSectionTarget) {
+			const el = document.querySelector(resolvedTarget);
+			if (el) {
+				runLenisScroll(lenis, resolvedTarget, options);
+				return;
+			}
 
-			router.navigate({ to: "/", resetScroll: false }).catch(() => {
-				pendingScrollRef.current = null;
-			});
-
-			return;
+			if (pathname !== "/") {
+				pendingScrollRef.current = { target: resolvedTarget, options };
+				router.navigate({ to: "/", resetScroll: false }).catch(() => {
+					pendingScrollRef.current = null;
+				});
+				return;
+			}
 		}
 
 		runLenisScroll(lenis, resolvedTarget, options);

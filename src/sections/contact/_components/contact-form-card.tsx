@@ -29,7 +29,7 @@ export default function ContactFormCard() {
 			firstName: formData.get("firstName")?.toString().trim() ?? "",
 			lastName: formData.get("lastName")?.toString().trim() ?? "",
 			email: formData.get("email")?.toString().trim() ?? "",
-			subject: formData.get("subject")?.toString().trim() ?? "",
+			company: formData.get("company")?.toString().trim() ?? "",
 			message: formData.get("message")?.toString().trim() ?? "",
 		};
 
@@ -111,14 +111,14 @@ export default function ContactFormCard() {
 						variant={errors.email ? "error" : "default"}
 					/>
 					<Input
-						label="Project or company"
-						name="subject"
-						placeholder="Tell me what you're building"
+						label="Company"
+						name="company"
+						placeholder="Your company name"
 						wrapperClassName="w-full bg-[color-mix(in_oklch,var(--color-background)_60%,var(--color-card)_40%)]"
-						variant={errors.subject ? "error" : "default"}
+						variant={errors.company ? "error" : "default"}
 					/>
 					<Textarea
-						label="How can I help?"
+						label="How can we help?"
 						name="message"
 						placeholder="What problem are we solving together?"
 						rows={5}

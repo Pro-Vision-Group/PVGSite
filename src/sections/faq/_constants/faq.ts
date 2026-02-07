@@ -5,86 +5,86 @@ export interface FaqItem {
 
 export const faqItems: FaqItem[] = [
 	{
-		question: "What type of work can I showcase here?",
+		question: "What industries does Pro Vision Group operate in?",
 		answer:
-			"Use this answer to outline the kind of projects you take on mobile apps, SaaS dashboards, creative campaigns, installations, you name it. Mention the industries or team sizes you typically collaborate with.",
+			"Pro Vision Group operates across technology, construction and contracting, management consulting, real estate development, strategic investments, and media production. Our diversified portfolio allows us to deliver integrated solutions across multiple sectors.",
 	},
 	{
-		question: "How should I describe my process?",
+		question: "How can I partner with Pro Vision Group?",
 		answer:
-			"Walk visitors through your approach from kickoff to launch. Touch on discovery, design handoff, development milestones, QA, and how you wrap projects to keep expectations clear.",
+			"We welcome partnerships across all our verticals. Whether you're looking for a joint venture, technology collaboration, or strategic alliance, reach out through our contact form and our partnerships team will arrange a consultation.",
 	},
 	{
-		question: "What timelines should I mention?",
+		question: "Where is Pro Vision Group headquartered?",
 		answer:
-			"Share realistic ranges for the work you do most often. Highlight the factors that can speed things up or slow them down so prospects understand how to plan with you.",
+			"Pro Vision Group is headquartered in Dubai, United Arab Emirates. We serve clients across the GCC region and internationally, with operations and partnerships spanning multiple countries.",
 	},
 	{
-		question: "How do I talk about collaboration?",
+		question: "What is your approach to new ventures?",
 		answer:
-			"Explain how you plug into existing teams, whether you provide async updates, and what tools (Figma, Linear, Slack, etc.) you prefer for smooth communication.",
+			"We evaluate new ventures through a rigorous due diligence process that assesses market viability, strategic alignment, and long-term value creation. Our experienced leadership team ensures every new initiative supports our broader vision for sustainable growth.",
 	},
 	{
-		question: "Which tools or stack belong here?",
+		question: "Do you offer consulting services?",
 		answer:
-			"List the technologies that define your work frameworks, animation libraries, prototyping tools, or 3D workflows. This helps clients match you with the right projects.",
+			"Yes. Pro Vision Consulting provides strategic advisory, operational optimization, and market entry consulting for businesses of all sizes. Our consultants bring deep regional expertise and cross-industry knowledge to every engagement.",
 	},
 	{
-		question: "Can I mention availability?",
+		question: "How can I contact your team?",
 		answer:
-			"Absolutely. Let people know if youre booking a month out, available instantly, or only taking on retainers. It saves back-and-forth and sets an immediate expectation.",
+			"You can reach us through the contact form on this website, by emailing info@provisiongroup.ae, or by visiting our Dubai headquarters. We typically respond to all inquiries within one business day.",
 	},
 	{
-		question: "Should I cover pricing?",
+		question: "Are you open to investment opportunities?",
 		answer:
-			"If youre comfortable sharing, outline the formats you offer: fixed bids, retainers, sprints, or day rates. Even a simple range provides clarity for new leads.",
+			"Absolutely. Pro Vision Investments actively evaluates opportunities in real estate, technology, and emerging markets. If you have an investment proposal, please get in touch and our team will review it thoroughly.",
 	},
 	{
-		question: "What if someone needs more info?",
+		question: "What sets Pro Vision Group apart?",
 		answer:
-			"Encourage visitors to reach out with anything not covered above. Point them to your contact form or email so they know exactly how to start the conversation.",
+			"Our integrated group structure means clients benefit from the collective expertise, resources, and networks of all our subsidiaries. Combined with over 15 years of regional experience and a commitment to excellence, we deliver results that standalone firms simply cannot match.",
 	},
 ];
 
 export const faqItemsMobile: FaqItem[] = [
 	{
-		question: "What projects fit here?",
+		question: "What industries do you operate in?",
 		answer:
-			"Describe the type of work you love doing and who its for so new leads know theyre in the right place.",
+			"Technology, construction, consulting, real estate, investments, and media — a fully diversified group of companies.",
 	},
 	{
-		question: "Whats the process?",
+		question: "How can I partner with you?",
 		answer:
-			"Outline your workflow at a high level discovery, build, launch to show how organized you are.",
+			"Reach out through our contact form and our partnerships team will arrange a consultation tailored to your needs.",
 	},
 	{
-		question: "How fast can things ship?",
+		question: "Where are you headquartered?",
 		answer:
-			"Give a rough range for common engagements and call out what makes timelines move up or down.",
+			"Dubai, UAE — serving clients across the GCC and internationally.",
 	},
 	{
-		question: "How do we collaborate?",
+		question: "What's your approach to new ventures?",
 		answer:
-			"List the tools you prefer and whether you plug into existing teams, handle communication async, or lead the project.",
+			"Rigorous due diligence assessing market viability, strategic alignment, and long-term value creation.",
 	},
 	{
-		question: "What tools do you use?",
+		question: "Do you offer consulting?",
 		answer:
-			"Share your primary stack or platforms. People searching for a specialist will thank you.",
+			"Yes. Pro Vision Consulting provides strategic advisory, operational optimization, and market entry services.",
 	},
 	{
-		question: "Are you available?",
+		question: "How do I contact you?",
 		answer:
-			"Let folks know if youre open for new work now, booking next quarter, or taking on limited engagements.",
+			"Use our contact form, email info@provisiongroup.ae, or visit our Dubai headquarters.",
 	},
 	{
-		question: "How do you price projects?",
+		question: "Open to investments?",
 		answer:
-			"Reference your preferred model (fixed scope, sprint-based, or retainers) and invite people to request a quote.",
+			"Yes. Pro Vision Investments actively evaluates opportunities in real estate, technology, and emerging markets.",
 	},
 	{
-		question: "Need something else?",
+		question: "What sets you apart?",
 		answer:
-			"Remind visitors they can always message you through the contact form for anything not covered here.",
+			"Our integrated group structure, 15+ years of regional expertise, and a commitment to delivering excellence across every engagement.",
 	},
 ];

@@ -83,8 +83,8 @@ export function ContactMessageEmail({ data }: ContactMessageEmailProps) {
 								<td style={styles.tableCellValue}>{data.email}</td>
 							</tr>
 							<tr>
-								<td style={styles.tableCellLabel}>Subject</td>
-								<td style={styles.tableCellValue}>{data.subject}</td>
+								<td style={styles.tableCellLabel}>Company</td>
+								<td style={styles.tableCellValue}>{data.company}</td>
 							</tr>
 						</tbody>
 					</table>
