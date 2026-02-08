@@ -67,7 +67,7 @@ export default function Hero() {
 
 			gsap.set(
       [logoRef.current, badgeRef.current, titleRef.current, descriptionRef.current, ...(actionsRef.current ? Array.from(actionsRef.current.children) : [])],
-      { autoAlpha: 0 }
+      { autoAlpha: 1 }
       );
 
 			const splits: SplitText[] = [];
