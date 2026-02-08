@@ -41,7 +41,7 @@ const SITE_URL = "https://provisiongroup.ae";
 const SITE_NAME = "Pro Vision Group";
 const DEFAULT_TITLE = "Pro Vision Group — Visionary Solutions, Exceptional Results";
 const DEFAULT_DESCRIPTION =
-	"Pro Vision Group is a premier consortium of companies delivering excellence across technology, consulting, construction, real estate, investments, and media in the UAE and beyond.";
+	"Pro Vision Group is a premier consortium of companies delivering visionary solutions and exceptional results in the UAE and beyond.";
 const DEFAULT_KEYWORDS = [
 	"Pro Vision Group",
 	"UAE business group",

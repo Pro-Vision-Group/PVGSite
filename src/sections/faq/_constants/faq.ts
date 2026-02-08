@@ -85,6 +85,6 @@ export const faqItemsMobile: FaqItem[] = [
 	{
 		question: "What sets you apart?",
 		answer:
-			"Our integrated group structure, 15+ years of regional expertise, and a commitment to delivering excellence across every engagement.",
+			"Our integrated group structure, 5+ years of regional expertise, and a commitment to delivering visionary solutions and exceptional results in every engagement.",
 	},
 ];

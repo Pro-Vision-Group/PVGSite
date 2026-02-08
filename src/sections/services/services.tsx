@@ -20,11 +20,10 @@ export default function Services() {
 					</h3>
 					<p className="text-sm text-foreground/60 leading-relaxed">
 						Pro Vision Group is a UAE-based company with over
-						5 years of experience delivering excellence across
-						technology, consulting, construction, and strategic
-						investments. Headquartered in Dubai, we offer
-						integrated, end-to-end solutions for businesses across
-						the region and beyond.
+						5 years of experience delivering visionary solutions
+						and exceptional results. Headquartered in Dubai, we
+						offer integrated, end-to-end solutions for businesses
+						in the region and beyond.
 					</p>
 				</div>
 				<div className="flex flex-col items-center justify-center gap-1 rounded-lg border border-border bg-card p-6 text-center">

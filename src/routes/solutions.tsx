@@ -207,6 +207,11 @@ const differentiators = [
 function SolutionsPage() {
 	const posts = Route.useLoaderData();
 	const { scrollTo } = useLenis();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const heroRef = useRef<HTMLDivElement>(null);
 	const logoRef = useRef<HTMLDivElement>(null);
 	const badgeRef = useRef<HTMLDivElement>(null);
@@ -241,8 +246,8 @@ function SolutionsPage() {
 			if (!hero) return;
 
 			gsap.set(
-				[logoRef.current, badgeRef.current, subtitleRef.current, descriptionRef.current, actionsRef.current],
-				{ autoAlpha: 1 },
+				[logoRef.current, badgeRef.current, subtitleRef.current, descriptionRef.current, ...(actionsRef.current ? Array.from(actionsRef.current.children) : [])],
+				{ autoAlpha: 0 },
 			);
 
 			const splits: SplitText[] = [];
@@ -333,7 +338,7 @@ function SolutionsPage() {
 			{/* Hero */}
 			<section ref={heroRef} className="relative flex h-svh w-full flex-col items-center justify-center gap-4 px-4 md:px-16">
 				<div className="relative z-10 flex flex-col items-center gap-3">
-					<div ref={logoRef} style={{ visibility: "hidden" }} className="relative h-10 md:h-14 mb-8">
+					<div ref={logoRef} className="relative h-10 md:h-14 mb-8">
 						<img
 							src="/provision-solutions-logo.png"
 							alt="Pro Vision Solutions"
@@ -354,21 +359,21 @@ function SolutionsPage() {
 							} as React.CSSProperties}
 						/>
 					</div>
-					<div style={{ visibility: "hidden" }} ref={badgeRef} className="w-fit">
+					<div ref={badgeRef} className="w-fit">
 						<ShinyBadge>
 							<CodeIcon aria-hidden="true" className="size-3.5" />
 							Technology &amp; Digital Solutions
 						</ShinyBadge>
 					</div>
 					<p
-						style={{ visibility: "hidden" }}
+	
 						ref={subtitleRef}
 						className="text-lg md:text-xl text-center text-foreground/70 font-medium text-balance leading-relaxed max-w-md"
 					>
 						Technology That Drives Business Forward
 					</p>
 					<p
-						style={{ visibility: "hidden" }}
+	
 						ref={descriptionRef}
 						className="text-base text-center text-foreground/50 font-medium text-balance leading-relaxed max-w-xl"
 					>
@@ -376,10 +381,10 @@ function SolutionsPage() {
 					</p>
 				</div>
 				<div ref={actionsRef} className="relative z-10 flex items-center gap-2">
-					<Button style={{ visibility: "hidden" }} variant="default" size="md" onClick={() => scrollTo("#services")}>
+					<Button variant="default" size="md" onClick={() => scrollTo("#services")}>
 						Our Services
 					</Button>
-					<Button style={{ visibility: "hidden" }} variant="secondary" size="md" onClick={() => scrollTo("#contact")}>
+					<Button variant="secondary" size="md" onClick={() => scrollTo("#contact")}>
 						Get in Touch
 					</Button>
 				</div>

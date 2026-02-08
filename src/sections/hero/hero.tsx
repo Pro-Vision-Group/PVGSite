@@ -66,8 +66,8 @@ export default function Hero() {
 			if (!hero) return;
 
 			gsap.set(
-      [logoRef.current, badgeRef.current, titleRef.current, descriptionRef.current, actionsRef.current],
-      { autoAlpha: 1 }
+      [logoRef.current, badgeRef.current, titleRef.current, descriptionRef.current, ...(actionsRef.current ? Array.from(actionsRef.current.children) : [])],
+      { autoAlpha: 0 }
       );
 
 			const splits: SplitText[] = [];
@@ -191,7 +191,7 @@ export default function Hero() {
 			className="relative flex h-svh w-full px-4 md:px-16 flex-col items-center justify-center gap-4"
 		>
 			<div className="relative z-10 flex flex-col items-center gap-2">
-				<div ref={logoRef} style={{visibility: "hidden"}} className="relative h-10 md:h-14 mb-8 flex items-center justify-center">
+				<div ref={logoRef} className="relative h-10 md:h-14 mb-8 flex items-center justify-center">
 					<img src="/logo.png" alt="Pro Vision Group" className="h-full mx-auto object-contain" />
 					<div
 						className="pointer-events-none absolute inset-0 animate-shiny-text bg-linear-to-r from-transparent via-white/60 to-transparent bg-no-repeat bg-position-[0_0] bg-size-[200px_100%]"
@@ -208,30 +208,30 @@ export default function Hero() {
 						} as React.CSSProperties}
 					/>
 				</div>
-				<div style={{visibility: "hidden"}} ref={badgeRef} className="w-fit">
+				<div ref={badgeRef} className="w-fit">
 					<ShinyBadge>
 						<FrameIcon aria-hidden="true" className="size-3.5" />
 						Established Group of Companies
 					</ShinyBadge>
 				</div>
 				<h1
-				  style={{visibility: "hidden"}}
+				  
 					ref={titleRef}
 					className="text-3xl text-center text-foreground font-medium text-balance max-w-3xl"
 				>
 					Visionary Solutions, Exceptional Results
 				</h1>
 				<p
-		      style={{visibility: "hidden"}}
+		      
 					ref={descriptionRef}
 					className="text-base md:text-lg text-center text-foreground/70 font-medium text-balance leading-relaxed max-w-xl"
 				>
-					A premier consortium of companies delivering excellence across technology, consulting, construction, and strategic investments.
+					A premier consortium of companies delivering visionary solutions and exceptional results.
 				</p>
 			</div>
 			<div ref={actionsRef} className="relative z-10  flex items-center gap-2">
 				<Button
-			    style={{visibility: "hidden"}}
+			    
 					variant="default"
 					size="md"
 					onClick={() => scrollTo("#works")}
@@ -239,7 +239,7 @@ export default function Hero() {
 					Explore Our Companies
 				</Button>
 				<Button
-		      style={{visibility: "hidden"}}
+		      
 					variant="secondary"
 					size="md"
 					onClick={() => scrollTo("#contact")}

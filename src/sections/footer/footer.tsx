@@ -27,9 +27,8 @@ export default function Footer() {
 							<img src="/logo.png" alt="Pro Vision Group" className="h-8" />
 						</div>
 						<p className="text-xs text-foreground/70 leading-relaxed max-w-xs">
-							A premier consortium of companies delivering excellence across
-							technology, consulting, construction, and strategic investments in
-							the UAE and beyond.
+							A premier consortium of companies delivering visionary solutions
+							and exceptional results in the UAE and beyond.
 						</p>
 					</div>
 
