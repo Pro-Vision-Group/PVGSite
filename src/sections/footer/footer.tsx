@@ -1,5 +1,5 @@
 import type { MouseEvent } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useMatchRoute } from "@tanstack/react-router";
 import { useLenis } from "@/lib/lenis-context";
 import {
 	footerLinks,
@@ -9,6 +9,8 @@ import {
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
 	const { scrollTo } = useLenis();
+	const matchRoute = useMatchRoute();
+	const isSolutionsPage = !!matchRoute({ to: "/solutions" });
 
 	const handleScrollClick = (
 		event: MouseEvent<HTMLAnchorElement>,
@@ -24,11 +26,16 @@ export default function Footer() {
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col gap-3">
 						<div className="flex gap-2 items-center text-foreground">
-							<img src="/logo.png" alt="Pro Vision Group" className="h-8" />
+							<img
+								src={isSolutionsPage ? "/provision-solutions-logo.png" : "/logo.png"}
+								alt={isSolutionsPage ? "Pro Vision Solutions" : "Pro Vision Group"}
+								className="h-8"
+							/>
 						</div>
 						<p className="text-xs text-foreground/70 leading-relaxed max-w-xs">
-							A premier consortium of companies delivering visionary solutions
-							and exceptional results in the UAE and beyond.
+							{isSolutionsPage
+								? "Enterprise-grade software development, cloud infrastructure, and digital transformation solutions for businesses across the UAE and beyond."
+								: "A premier consortium of companies delivering visionary solutions and exceptional results in the UAE and beyond."}
 						</p>
 					</div>
 
@@ -78,7 +85,7 @@ export default function Footer() {
 			<div className="text-xs text-foreground/70 border-t border-border/80">
 				<div className="w-full md:max-w-full mx-auto flex flex-col md:flex-row gap-1 px-4 py-4 md:px-2 items-center justify-between">
 					<p>
-						&copy; {currentYear} Pro Vision Group. All rights reserved.
+						&copy; {currentYear} {isSolutionsPage ? "Pro Vision Solutions" : "Pro Vision Group"}. All rights reserved.
 					</p>
 					<p>
 						Headquartered in Dubai, UAE. Delivering excellence worldwide.

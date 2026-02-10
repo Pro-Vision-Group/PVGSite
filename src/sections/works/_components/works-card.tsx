@@ -33,18 +33,34 @@ export default function WorksCard({
 						<div
 							className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] opacity-15 dark:opacity-10 blur-3xl"
 							style={{
-								background: "radial-gradient(ellipse at center, oklch(0.7 0.12 70), transparent 70%)",
+								background: "radial-gradient(ellipse at center, oklch(0.7 0.12 145), transparent 70%)",
 							}}
 						/>
 					)}
 
 					{/* Logo */}
 					{logo ? (
-						<img
-							src={logo}
-							alt={title}
-							className="relative h-10 md:h-16 object-contain transition-transform duration-500 ease-smooth group-hover:scale-105"
-						/>
+						<div className="relative h-10 md:h-16 transition-transform duration-500 ease-smooth group-hover:scale-105">
+							<img
+								src={logo}
+								alt={title}
+								className="h-full object-contain"
+							/>
+							<div
+								className="pointer-events-none absolute inset-0 animate-shiny-text bg-linear-to-r from-transparent via-white/60 to-transparent bg-no-repeat bg-position-[0_0] bg-size-[200px_100%]"
+								style={{
+									"--shiny-width": "200px",
+									WebkitMaskImage: `url(${logo})`,
+									WebkitMaskSize: "contain",
+									WebkitMaskRepeat: "no-repeat",
+									WebkitMaskPosition: "center",
+									maskImage: `url(${logo})`,
+									maskSize: "contain",
+									maskRepeat: "no-repeat",
+									maskPosition: "center",
+								} as React.CSSProperties}
+							/>
+						</div>
 					) : (
 						<img
 							src={image}

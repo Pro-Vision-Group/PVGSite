@@ -43,11 +43,17 @@ const ShaderPlane = ({
 	);
 };
 
+interface ColorPreset {
+	shadow: readonly [number, number, number];
+	highlight: readonly [number, number, number];
+}
+
 interface ShaderBackgroundProps {
 	vertexShader?: string;
 	fragmentShader?: string;
 	uniforms?: { [key: string]: { value: unknown } };
 	className?: string;
+	colors?: { dark: ColorPreset; light: ColorPreset };
 }
 
 const COLOR_PRESETS = {
@@ -124,12 +130,15 @@ const Background = ({
 `,
 	uniforms,
 	className = "absolute inset-0 w-full h-full",
+	colors,
 }: ShaderBackgroundProps) => {
 	const { theme } = useTheme();
 	const initialTheme = useRef(theme);
 
+	const presets = colors ?? COLOR_PRESETS;
+
 	const shaderUniforms = useMemo(() => {
-		const palette = COLOR_PRESETS[initialTheme.current];
+		const palette = presets[initialTheme.current];
 		const [shadowR, shadowG, shadowB] = palette.shadow;
 		const [highlightR, highlightG, highlightB] = palette.highlight;
 		const baseUniforms = {
@@ -144,10 +153,10 @@ const Background = ({
 		};
 
 		return { ...baseUniforms, ...(uniforms ?? {}) };
-	}, [uniforms]);
+	}, [uniforms, presets]);
 
 	useEffect(() => {
-		const palette = COLOR_PRESETS[theme];
+		const palette = presets[theme];
 		const [shadowR, shadowG, shadowB] = palette.shadow;
 		const [highlightR, highlightG, highlightB] = palette.highlight;
 		const shadowUniform = shaderUniforms.u_colorShadow;

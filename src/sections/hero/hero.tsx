@@ -51,8 +51,13 @@ export default function Hero() {
 			}
 		});
 
+		const timeout = setTimeout(() => {
+			if (isActive) setFontsLoaded(true);
+		}, 2000);
+
 		return () => {
 			isActive = false;
+			clearTimeout(timeout);
 		};
 	}, [fontsLoaded]);
 
@@ -95,11 +100,6 @@ export default function Hero() {
 			const timeline = gsap.timeline({
 				defaults: {
 					ease: premiumEase,
-				},
-				scrollTrigger: {
-					trigger: hero,
-					start: "top 80%",
-					once: true,
 				},
 			});
 

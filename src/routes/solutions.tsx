@@ -206,11 +206,11 @@ const differentiators = [
 
 function SolutionsPage() {
 	const posts = Route.useLoaderData();
-	const { scrollTo } = useLenis();
+	const { lenis, scrollTo } = useLenis();
 
 	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+		lenis.current?.scrollTo(0, { immediate: true });
+	});
 
 	const heroRef = useRef<HTMLDivElement>(null);
 	const logoRef = useRef<HTMLDivElement>(null);
@@ -234,8 +234,14 @@ function SolutionsPage() {
 		document.fonts.ready.then(() => {
 			if (isActive) setFontsLoaded(true);
 		});
+
+		const timeout = setTimeout(() => {
+			if (isActive) setFontsLoaded(true);
+		}, 2000);
+
 		return () => {
 			isActive = false;
+			clearTimeout(timeout);
 		};
 	}, [fontsLoaded]);
 
@@ -267,7 +273,6 @@ function SolutionsPage() {
 
 			const timeline = gsap.timeline({
 				defaults: { ease: premiumEase },
-				scrollTrigger: { trigger: hero, start: "top 80%", once: true },
 			});
 
 			if (logoRef.current) {
@@ -389,7 +394,18 @@ function SolutionsPage() {
 					</Button>
 				</div>
 				<div className="absolute inset-0 z-0 h-full w-full pointer-events-none">
-					<Background />
+					<Background
+						colors={{
+							dark: {
+								shadow: [0.02, 0.04, 0.03],
+								highlight: [0.03, 0.09, 0.05],
+							},
+							light: {
+								shadow: [0.96, 0.99, 0.96],
+								highlight: [0.78, 0.92, 0.80],
+							},
+						}}
+					/>
 				</div>
 			</section>
 
