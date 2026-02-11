@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Background } from "@/sections/hero/_components/background";
 
 interface WorksCardProps {
 	image: string;
@@ -25,8 +26,23 @@ export default function WorksCard({
 
 	return (
 		<Card className="group relative w-full overflow-hidden">
-			{/* @ts-expect-error - dynamic wrapper */}
-			<Wrapper {...wrapperProps} className="block">
+			{/* Shader background */}
+			<div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-lg">
+				<Background
+					colors={{
+						dark: {
+							shadow: [0.01, 0.025, 0.015],
+							highlight: [0.025, 0.13, 0.05],
+						},
+						light: {
+							shadow: [0.96, 0.99, 0.96],
+							highlight: [0.78, 0.92, 0.80],
+						},
+					}}
+				/>
+			</div>
+
+			<Wrapper {...wrapperProps} className="relative z-10 block">
 				<div className="relative flex flex-col items-center gap-8 px-6 py-16 md:py-24">
 					{/* Radial glow behind logo */}
 					{logo && (
