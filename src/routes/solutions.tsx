@@ -339,7 +339,7 @@ function SolutionsPage() {
 	);
 
 	return (
-		<main className="mx-auto flex w-full flex-col items-center justify-start">
+		<main className="mx-auto flex w-full flex-col items-center justify-start solutions-theme">
 			{/* Hero */}
 			<section ref={heroRef} className="relative flex h-svh w-full flex-col items-center justify-center gap-4 px-4 md:px-16">
 				<div className="relative z-10 flex flex-col items-center gap-3">
